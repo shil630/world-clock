@@ -88,6 +88,7 @@ const state = {
   use24h: true,
   darkMode: false,
   rendered: [],
+  cardSize: "md",
 };
 
 const clockGrid = document.getElementById("clockGrid");
@@ -99,6 +100,7 @@ const addModal = document.getElementById("addModal");
 const closeAddModalBtn = document.getElementById("closeAddModalBtn");
 const citySearchInput = document.getElementById("citySearchInput");
 const cityResults = document.getElementById("cityResults");
+const cardSizeSelect = document.getElementById("cardSizeSelect");
 
 let clockIdCounter = 0;
 
@@ -116,8 +118,11 @@ function init() {
   });
 
   renderCards();
+  applyCardSize(state.cardSize);
+  cardSizeSelect.value = state.cardSize;
   formatToggle.addEventListener("change", handleFormatToggle);
   themeToggle.addEventListener("change", handleThemeToggle);
+  cardSizeSelect.addEventListener("change", handleCardSizeChange);
   addClockBtn.addEventListener("click", handleAddClock);
   closeAddModalBtn.addEventListener("click", closeAddModal);
   addModal.addEventListener("click", (event) => {
@@ -211,6 +216,11 @@ function handleThemeToggle() {
   document.body.classList.toggle("dark", state.darkMode);
 }
 
+function handleCardSizeChange() {
+  state.cardSize = cardSizeSelect.value;
+  applyCardSize(state.cardSize);
+}
+
 function tick() {
   const now = new Date();
   state.rendered.forEach(({ clock, timeNode, dateNode }) => {
@@ -235,6 +245,10 @@ function updateCard({ zone, timeNode, dateNode, now = new Date() }) {
 
   timeNode.textContent = formatter.format(now);
   dateNode.textContent = dateFormatter.format(now);
+}
+
+function applyCardSize(size) {
+  clockGrid.dataset.size = size;
 }
 
 function openAddModal() {
