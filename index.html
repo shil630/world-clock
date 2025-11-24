@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>世界时钟面板</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app" id="app">
+      <header class="app__header">
+        <div>
+          <h1>世界时钟</h1>
+          <p>追踪全球主要城市时间，随时增删你的关注列表。</p>
+        </div>
+        <div class="controls">
+          <div class="toggles">
+            <label class="toggle">
+              <span>12 / 24 小时制</span>
+              <input type="checkbox" id="formatToggle" />
+            </label>
+            <label class="toggle">
+              <span>Light / Dark</span>
+              <input type="checkbox" id="themeToggle" />
+            </label>
+          </div>
+          <button class="ghost-btn" id="addClockBtn" type="button">
+            + 添加地点
+          </button>
+        </div>
+      </header>
+
+      <main class="clock-grid" id="clockGrid">
+        <!-- JS 注入时钟卡片 -->
+      </main>
+    </div>
+
+    <template id="clockTemplate">
+      <section class="clock-card">
+        <div class="clock-card__header">
+          <div class="clock-card__meta">
+            <select class="city-select"></select>
+            <span class="timezone-label"></span>
+          </div>
+          <button class="remove-btn" type="button" aria-label="移除此时钟">
+            ×
+          </button>
+        </div>
+        <div class="clock-card__time">
+          <span class="time"></span>
+          <span class="date"></span>
+        </div>
+      </section>
+    </template>
+
+    <script src="./main.js"></script>
+  </body>
+</html>
+
