@@ -53,6 +53,39 @@
       </section>
     </template>
 
+    <div class="add-modal" id="addModal" aria-hidden="true">
+      <div
+        class="add-modal__panel"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="addModalTitle"
+      >
+        <div class="add-modal__header">
+          <div>
+            <h2 id="addModalTitle">添加城市</h2>
+            <p>搜索并选择一个城市即可添加到面板。</p>
+          </div>
+          <button
+            class="icon-btn"
+            type="button"
+            aria-label="关闭添加城市面板"
+            id="closeAddModalBtn"
+          >
+            ×
+          </button>
+        </div>
+        <div class="add-modal__search">
+          <input
+            type="search"
+            id="citySearchInput"
+            placeholder="搜索城市或时区，例如：伦敦、America/Chicago"
+            autocomplete="off"
+          />
+        </div>
+        <div class="add-modal__results" id="cityResults"></div>
+      </div>
+    </div>
+
     <script src="./main.js"></script>
   </body>
 </html>

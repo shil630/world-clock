@@ -200,6 +200,122 @@ body {
   color: var(--muted);
 }
 
+.add-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  z-index: 100;
+}
+
+.add-modal.is-visible {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.add-modal__panel {
+  width: min(520px, 100%);
+  max-height: min(600px, 100%);
+  background: var(--panel);
+  border-radius: 32px;
+  padding: 28px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.add-modal__header h2 {
+  margin: 0 0 6px;
+  font-size: 1.4rem;
+}
+
+.add-modal__header p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.icon-btn {
+  border: none;
+  background: rgba(148, 163, 184, 0.2);
+  color: var(--text);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.2rem;
+  line-height: 1;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.icon-btn:hover {
+  background: rgba(37, 99, 235, 0.2);
+  transform: rotate(8deg);
+}
+
+.add-modal__search input {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  font-size: 1rem;
+  background: transparent;
+  color: var(--text);
+  outline: none;
+  transition: border 0.2s ease;
+}
+
+.add-modal__search input:focus {
+  border-color: var(--accent);
+}
+
+.add-modal__results {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.result-item {
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 14px 18px;
+  background: transparent;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: border 0.2s ease, transform 0.2s ease;
+}
+
+.result-item:hover {
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.result-item__label {
+  font-weight: 600;
+}
+
+.result-item__zone {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.add-modal__empty {
+  text-align: center;
+  color: var(--muted);
+  padding: 40px 0;
+}
+
 @media (max-width: 640px) {
   .app {
     padding: 24px 16px 60px;
